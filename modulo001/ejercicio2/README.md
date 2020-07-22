@@ -1,4 +1,7 @@
 1. Crear un proyecto Maven con el comando **mvn archetype:generate** (En modo no interactivo)
+```bash
+mvn archetype:generate -DgroupId="com.globallogic.myapp" -DartifactId="bootcampgl" -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion="1.0" -DinteractiveMode=false
+```
   - Agregar las dependencias para Log4j (Log4j es una biblioteca para el manejo y registros de logs)
   - Descargar las dependencias por medio del comando **mvn dependency:resolve** 
 
