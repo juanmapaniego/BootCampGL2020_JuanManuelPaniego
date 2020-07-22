@@ -36,5 +36,18 @@
       <version>1.7.30</version>      
     </dependency>
 
+    <!-- MICROMETER -->
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-core</artifactId>
+      <version>1.5.2</version>   
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-core</artifactId>
+        </exclusion>
+      </exclusions>   
+    </dependency>
+
   </dependencies>
 </project>
