@@ -9,8 +9,8 @@ public class Empleado {
 	static double salario;
 	static String nombre;
 	
-	public Empleado(double salario) {
-		nombre = "Alex";
+	public Empleado(String nombre, double salario) {
+		this.nombre = nombre;
 		this.salario = salario;
 	}
 

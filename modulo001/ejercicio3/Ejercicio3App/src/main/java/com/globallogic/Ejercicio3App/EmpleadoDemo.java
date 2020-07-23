@@ -8,7 +8,7 @@ package com.globallogic.Ejercicio3App;
 public class EmpleadoDemo {
 
 	public static void main(String[] args) {
-		Empleado empleado = new Empleado(1000);
+		Empleado empleado = new Empleado("Alex",1000);
 		System.out.println(empleado.getNombre() + 
 				" tiene un salario promedio de "
 				+ empleado.getSalario());
