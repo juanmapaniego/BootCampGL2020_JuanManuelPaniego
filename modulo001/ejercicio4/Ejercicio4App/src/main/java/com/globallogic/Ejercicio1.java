@@ -5,7 +5,7 @@ package com.globallogic;
  * @author jmpaniego
  *
  */
-public class App 
+public class Ejercicio1 
 {
     public static void main( String[] args )
     {
