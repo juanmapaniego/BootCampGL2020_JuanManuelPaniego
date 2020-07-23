@@ -11,7 +11,7 @@ import com.globallogic.model.Heladera;
  * @author jmpaniego
  *
  */
-public class App 
+public class Herencia 
 {
     public static void main( String[] args )
     {
