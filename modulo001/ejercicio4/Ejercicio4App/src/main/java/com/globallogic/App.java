@@ -1,13 +1,20 @@
 package com.globallogic;
 
 /**
- * Hello world!
+ * 
+ * @author jmpaniego
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	Integer num1 = 3;
+    	Integer num2 = 10;
+    	Integer suma = num1 + num2;
+    	if(suma <= 10 )
+    		System.out.println("La suma de los dos numeros es : " + suma);
+    	else
+    		System.out.println("La suma de los numeros es mayor a 10");
     }
 }
