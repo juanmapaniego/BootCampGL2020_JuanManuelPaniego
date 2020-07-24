@@ -15,5 +15,7 @@ public class MainAnimal
     	Animal dog = new Perro();
     	System.out.println(dog.sonidoAnimal());
     	System.out.println(dog.dormir());
+    	dog.come("perro");
+    	Animal.camina("perro");
     }
 }
