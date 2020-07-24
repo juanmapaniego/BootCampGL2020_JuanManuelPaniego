@@ -10,10 +10,10 @@ public class App
     public static void main( String[] args )
     {
     	try {
-			Object object = null;
-			object.toString();
-		} catch (Exception e) {
-			System.out.println("Se produjo ua excepcion: " + e.getMessage());
+			Object[] array = new Object[1];
+			array[2].toString();
+		} catch (ArrayIndexOutOfBoundsException e) {			
+			System.out.println("Execpcion: indice de array fuera de limites");
 		}
     	
     }
