@@ -18,4 +18,9 @@ class AppTest {
 		assertNotEquals("Third", "third");
 	}
 
+	@Test
+	void ejer3() {
+		assertTrue(25 > 12);
+		assertFalse(25 > 27);
+	}
 }
