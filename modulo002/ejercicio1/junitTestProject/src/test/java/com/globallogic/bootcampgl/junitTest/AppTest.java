@@ -48,4 +48,18 @@ class AppTest {
 		assertNotEquals(app.sum(3, 3), 3+4);
 	}
 	
+	@Test
+	@DisplayName("Esta variable es true: ")
+	void ejer7TrueTest() {
+		App app = new App();
+		assertTrue(app.ejer7(10));
+	}
+	
+	@Test
+	@DisplayName("Esta variable es false: ")
+	void ejer7FalseTest() {
+		App app = new App();
+		assertFalse(app.ejer7(2));
+	}
+	
 }
