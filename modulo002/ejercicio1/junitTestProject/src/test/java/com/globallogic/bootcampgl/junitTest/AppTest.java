@@ -10,5 +10,12 @@ class AppTest {
 	void test() {
 		assertEquals("Test", "Test");
 	}
+	
+	@Test
+	void ejer2() {
+		assertEquals("First", "First");
+		assertEquals("Second", "Second");
+		assertNotEquals("Third", "third");
+	}
 
 }
