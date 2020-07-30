@@ -13,23 +13,23 @@ class AppTest {
 	
 	@Test
 	void ejer2() {
-		assertEquals("First", "First");
-		assertEquals("Second", "Second");
-		assertNotEquals("Third", "third");
+		assertNotEquals("First", "First");
+		assertNotEquals("Second", "Second");
+		assertEquals("Third", "third");
 	}
 
 	@Test
 	void ejer3() {
-		assertTrue(25 > 12);
-		assertFalse(25 > 27);
+		assertFalse(25 > 12);
+		assertTrue(25 > 27);
 	}
 	
 	@Test
 	void ejer4() {
 		Long index = null;
-		assertNull(index);
-		index = 1L;
 		assertNotNull(index);
+		index = 1L;
+		assertNull(index);
 		
 	}
 }
