@@ -23,4 +23,13 @@ class AppTest {
 		assertTrue(25 > 12);
 		assertFalse(25 > 27);
 	}
+	
+	@Test
+	void ejer4() {
+		Long index = null;
+		assertNull(index);
+		index = 1L;
+		assertNotNull(index);
+		
+	}
 }
