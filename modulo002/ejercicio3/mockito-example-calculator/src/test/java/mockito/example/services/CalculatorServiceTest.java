@@ -4,6 +4,7 @@
 package mockito.example.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
@@ -67,11 +68,19 @@ public class CalculatorServiceTest {
 	}
 	
 	@Test
-	@DisplayName("DataServiceMock")
+	@DisplayName("DataServiceMock return 3")
 	void testDisplayList(){
 		Mockito.when(dataServiceMock.getListOfNumbers()).thenReturn(new int[] {1,2,3,4,5});
 		
 		assertEquals(3.0, calculatorService.calculateAverage());
+	}
+	
+	@Test
+	@DisplayName("DataServiceMock throw")
+	void testDisplayListNull(){
+		Mockito.when(dataServiceMock.getListOfNumbers()).thenReturn(null);
+		
+		assertThrows(NullPointerException.class, () -> calculatorService.calculateAverage());
 	}
 	
 	
