@@ -3,6 +3,7 @@
  */
 package mockito.example.services.impl;
 
+import mockito.example.exceptions.ZeroDivisionException;
 import mockito.example.services.BasicOperationsService;
 import mockito.example.services.CalculatorService;
 import mockito.example.services.DataService;
@@ -35,8 +36,10 @@ public class CalculatorServiceImpl implements CalculatorService {
 	}
 	
 	@Override
-	public double calculateDivision(int a, int b) {
-		return basicOperationsService.divide(a, b);		
+	public double calculateDivision(int a, int b) throws ZeroDivisionException {
+		if(b==0)
+			throw new ZeroDivisionException("b equals to 0");
+		return basicOperationsService.divide(a, b);			
 	}
 
 	@Override

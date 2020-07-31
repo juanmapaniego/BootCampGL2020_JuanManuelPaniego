@@ -5,6 +5,7 @@ package mockito.example.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import mockito.example.exceptions.ZeroDivisionException;
 import mockito.example.services.impl.CalculatorServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
@@ -83,6 +85,12 @@ public class CalculatorServiceTest {
 		assertThrows(NullPointerException.class, () -> calculatorService.calculateAverage());
 	}
 	
+	@Test
+	@DisplayName("Zero division exception")
+	void testDivideByZero(){
+		assertThrows(ZeroDivisionException.class, () -> calculatorService.calculateDivision(1, 0));
+		verify(basicOperationsServiceMock, never()).divide(1, 0);
+	}
 	
 
 }
