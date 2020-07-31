@@ -3,6 +3,7 @@
  */
 package mockito.example.services;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.never;
@@ -14,6 +15,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -99,6 +102,12 @@ public class CalculatorServiceTest {
 		String actual = calculatorService.printResult(calculatorService.calculateSum(Mockito.anyInt(), Mockito.anyInt()));
 		
 		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = {1,3,5,7})
+	void testIsOdd(int a) {
+		assertTrue(calculatorService.isOdd(a));
 	}
 	
 

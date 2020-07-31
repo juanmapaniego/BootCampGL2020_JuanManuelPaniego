@@ -56,11 +56,12 @@ public class CalculatorServiceImpl implements CalculatorService {
 		}
 		return (numbers.length > 0) ? avg / numbers.length : 0;
 	}
-
+	
 	@Override
 	public boolean isOdd(int a) {
-		// TODO implement me
-		return false;
+		if(a % 2 == 0)
+			return false;
+		return true;
 	}
 
 	@Override
