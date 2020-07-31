@@ -92,5 +92,14 @@ public class CalculatorServiceTest {
 		verify(basicOperationsServiceMock, never()).divide(1, 0);
 	}
 	
+	@Test	
+	void testPrintResult(){
+		Mockito.when(basicOperationsServiceMock.add(Mockito.anyDouble(), Mockito.anyDouble())).thenReturn(5.0);
+		String expected = "El resultado es: 5.0";
+		String actual = calculatorService.printResult(calculatorService.calculateSum(Mockito.anyInt(), Mockito.anyInt()));
+		
+		assertEquals(expected, actual);
+	}
+	
 
 }
