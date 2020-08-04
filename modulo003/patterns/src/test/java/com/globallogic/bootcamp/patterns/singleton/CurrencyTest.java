@@ -13,7 +13,7 @@ class CurrencyTest {
 		Currency currency1 = Currency.getInstance();
 		Currency currency2 = Currency.getInstance();
 		
-		assertEquals(currency1, currency2);
+		assertSame(currency1, currency2);
 	}
 
 }

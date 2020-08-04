@@ -12,7 +12,7 @@ class OrderTest {
 		Order order2 = new Order("Order 2", 10);
 		
 		assertNotEquals(order1, order2);
-		assertEquals(order1.getCurrency(), order2.getCurrency());
+		assertSame(order1.getCurrency(), order2.getCurrency());
 	}
 	
 	@Test
@@ -21,7 +21,7 @@ class OrderTest {
 		Order order2 = new Order("Order 2", 10);
 		
 		assertNotEquals(order1, order2);
-		assertEquals(order1.getProduct(), order2.getProduct());
+		assertSame(order1.getProduct(), order2.getProduct());
 	}
 
 }
