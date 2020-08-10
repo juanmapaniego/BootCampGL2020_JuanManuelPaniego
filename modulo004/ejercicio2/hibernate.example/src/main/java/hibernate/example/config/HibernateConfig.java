@@ -10,6 +10,7 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import hibernate.example.model.Alumno;
+import hibernate.example.model.Menu;
 
 public class HibernateConfig {
 	private static SessionFactory sessionFactory = null;
@@ -28,6 +29,7 @@ public class HibernateConfig {
 				
 				configuration.setProperties(properties);
 				configuration.addAnnotatedClass(Alumno.class);
+				configuration.addAnnotatedClass(Menu.class);
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
