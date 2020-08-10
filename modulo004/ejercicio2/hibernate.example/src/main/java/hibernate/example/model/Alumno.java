@@ -16,9 +16,18 @@ public class Alumno {
 	@Column(name = "nombre2")
 	private String apellido;
 	
-	public Alumno() {
-		
+	public Alumno() {	
 	}
+	
+
+	public Alumno(Long id, String nombre, String apellido) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+	}
+
+
 
 	public Long getId() {
 		return id;

@@ -1,5 +1,8 @@
 package hibernate.example.config;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
@@ -18,14 +21,19 @@ public class HibernateConfig {
 	public static SessionFactory getSessionFactory() {
 		if(sessionFactory == null) {
 			try {
+				String propFileName = "db.properties";
+				
+				InputStream inputStream = HibernateConfig.class.getClassLoader().
+						getResourceAsStream(propFileName);
+				
 				Configuration configuration = new Configuration();
 				Properties properties = new Properties();
 				
-				properties.put(Environment.DRIVER, "org.h2.Driver");
-				properties.put(Environment.URL, "jdbc:h2:.");
-				properties.put(Environment.USER, "root");
-				properties.put(Environment.PASS, "root");
-				properties.put(Environment.HBM2DDL_AUTO, "create-drop");
+				if(!Objects.isNull(inputStream)) {
+					properties.load(inputStream);
+				}else {
+					throw new FileNotFoundException();
+				}								
 				
 				configuration.setProperties(properties);
 				configuration.addAnnotatedClass(Alumno.class);

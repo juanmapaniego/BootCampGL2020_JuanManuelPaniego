@@ -2,50 +2,42 @@ package hibernate.example;
 
 import hibernate.example.dao.AlumnoDao;
 import hibernate.example.model.Alumno;
+import hibernate.example.services.AlumnoService;
 
 public class ExampleApplication {
 
 	public static void main(String[] args) {
-		Alumno alumnoPerez = new Alumno();
-		alumnoPerez.setId(1l);
-		alumnoPerez.setApellido("Perez");
-		alumnoPerez.setNombre("Jose");
+		Alumno alumnoPerez = new Alumno(1L,"Jose","Perez");
 		
-		Alumno alumnoQuito = new Alumno();
-		alumnoQuito.setId(2l);
-		alumnoQuito.setApellido("Quito");
-		alumnoQuito.setNombre("Esteban");
+		Alumno alumnoQuito = new Alumno(2L,"Esteban","Quito");	
 		
-		Alumno alumnoGodofreda = new Alumno();
-		alumnoGodofreda.setId(3l);
-		alumnoGodofreda.setApellido("Godofreda");
-		alumnoGodofreda.setNombre("Ulrica");
+		Alumno alumnoGodofreda = new Alumno(3L,"Ulrica","Godofreda");
 		
-		AlumnoDao alumnoDao = new AlumnoDao();
+		AlumnoService  alumnoService = new AlumnoService();
 		
 		// Creates alumnos
-		alumnoDao.createAlumno(alumnoPerez);
-		alumnoDao.createAlumno(alumnoQuito);
-		alumnoDao.createAlumno(alumnoGodofreda);
+		alumnoService.createAlumno(alumnoPerez);
+		alumnoService.createAlumno(alumnoQuito);
+		alumnoService.createAlumno(alumnoGodofreda);
 		
 		// Prints all
-		System.out.println(alumnoDao.getAlumnos());
+		System.out.println(alumnoService.getAlumnos());
 		
 		//Modify Quito
 		alumnoQuito.setNombre("Estefano");
-		alumnoDao.updateAlumno(alumnoQuito);
+		alumnoService.updateAlumno(alumnoQuito);
 				
 		// Prints all
-		System.out.println(alumnoDao.getAlumnos());
+		System.out.println(alumnoService.getAlumnos());
 		
 		// Print Perez
-		System.out.println(alumnoDao.getAlumnos("Jose","Perez"));
+		System.out.println(alumnoService.getAlumnos("Jose","Perez"));
 		
 		// Remove Perez
-		alumnoDao.removeAlumno(alumnoPerez);
+		alumnoService.removeAlumno(alumnoPerez);
 		
 		// Prints all
-		System.out.println(alumnoDao.getAlumnos());
+		System.out.println(alumnoService.getAlumnos());
 
 	}
 

@@ -17,8 +17,18 @@ public class Menu {
 	private Double precio;
 	
 	public Menu() {
-		
+		super();
+	}	
+
+	public Menu(Long id, String nombre, String descripcion, Double precio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precio = precio;
 	}
+
+
 
 	public Long getId() {
 		return id;

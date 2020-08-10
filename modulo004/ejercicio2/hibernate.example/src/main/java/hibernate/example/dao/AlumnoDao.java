@@ -2,6 +2,7 @@ package hibernate.example.dao;
 
 
 import java.util.List;
+import java.util.Objects;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,6 +11,14 @@ import hibernate.example.config.HibernateConfig;
 import hibernate.example.model.Alumno;
 
 public class AlumnoDao {
+	
+	private static AlumnoDao instance;
+	
+	public static AlumnoDao getInstance() {
+		if(Objects.isNull(instance))
+			instance = new AlumnoDao();
+		return instance;
+	}
 	
 	public void createAlumno(Alumno alumno) {
 		Transaction transaction = null;

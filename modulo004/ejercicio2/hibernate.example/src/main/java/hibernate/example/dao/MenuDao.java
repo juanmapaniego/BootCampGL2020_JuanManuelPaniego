@@ -1,27 +1,37 @@
 package hibernate.example.dao;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import hibernate.example.config.HibernateConfig;
-import hibernate.example.model.Alumno;
 import hibernate.example.model.Menu;
 
 public class MenuDao {
 	
-	public void createMenu(Menu menu) {
+	private static MenuDao instance;
+	
+	public static MenuDao getInstance() {
+		if(Objects.isNull(instance))
+			instance = new MenuDao();
+		return instance;
+	}
+	
+	public boolean createMenu(Menu menu) {
 		Transaction transaction = null;
 		try(Session session = HibernateConfig.getSessionFactory().openSession()){
 			transaction = session.beginTransaction();
 			session.save(menu);
 			transaction.commit();
+			return true;
 		}catch (Exception e) {
 			if(transaction != null) {
 				transaction.rollback();
 			}
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -38,17 +48,19 @@ public class MenuDao {
 		}
 	}
 	
-	public void updateMenu(Menu menu) {
+	public boolean updateMenu(Menu menu) {
 		Transaction transaction = null;
 		try(Session session = HibernateConfig.getSessionFactory().openSession()){
 			transaction = session.beginTransaction();
 			session.update(menu);
 			transaction.commit();
+			return true;
 		}catch (Exception e) {
 			if(transaction != null) {
 				transaction.rollback();
 			}
 			e.printStackTrace();
+			return false;
 		}
 	}
 		
