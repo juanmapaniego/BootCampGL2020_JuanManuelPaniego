@@ -1,0 +1,4 @@
+SELECT * 
+FROM ANIMALS a
+WHERE a.weight > 30
+ORDER BY a.id ASC;

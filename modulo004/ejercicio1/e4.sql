@@ -1,0 +1,4 @@
+SELECT * 
+FROM ANIMALS a
+WHERE a.name LIKE 'L%'
+ORDER BY a.id ASC;
