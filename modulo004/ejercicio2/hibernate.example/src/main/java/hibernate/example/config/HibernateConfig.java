@@ -13,6 +13,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import hibernate.example.model.Alumno;
+import hibernate.example.model.Carrera;
+import hibernate.example.model.Competidor;
 import hibernate.example.model.Menu;
 
 public class HibernateConfig {
@@ -38,6 +40,8 @@ public class HibernateConfig {
 				configuration.setProperties(properties);
 				configuration.addAnnotatedClass(Alumno.class);
 				configuration.addAnnotatedClass(Menu.class);
+				configuration.addAnnotatedClass(Competidor.class);
+				configuration.addAnnotatedClass(Carrera.class);
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
