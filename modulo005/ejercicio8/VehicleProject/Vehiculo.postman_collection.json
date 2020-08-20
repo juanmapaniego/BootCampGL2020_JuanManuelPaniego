@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "ae540563-bbfb-416b-bc0c-d5c4c14ee392",
+		"name": "Vehiculo",
+		"description": "5.1: Crear un servicio rest que exponga las típicas capacidades (búsqueda, creación,\r\nmodificación, borrado) sobre la entidad Vehículo. Esta deberá alojarse en una base H2. Entidad vehículo\r\nse representa con el siguiente ejemplo, donde todos los campos son requeridos que estén presentes.\r\n(Utilizar la arquitectura Controller,Service,Repository)Crear los test de Postman necesarios para poder\r\nmostrar el correcto funcionamiento del servicio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetVehiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vehiculos/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetVehiculo 12345",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vehiculos/12345",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculos",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostVehiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\": 12345,\r\n    \"identificacion\": \"AB-123-CD\",\r\n    \"tipo\": {\r\n      \"codigo\": 12345,\r\n      \"categoria\": \"Sedan\",\r\n      \"puertas\": \"4\"\r\n    },\r\n    \"modelo\": {\r\n      \"codigo\": 12345678,\r\n      \"marca\": \"Global Motors\",\r\n      \"nombre\": \"911 Programador\"\r\n    },\r\n    \"fechaProduccion\": \"2020-08-17\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vehiculos/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutVehiculo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\": 12345,\r\n    \"identificacion\": \"AB-133-CD\",\r\n    \"tipo\": {\r\n      \"codigo\": 12345,\r\n      \"categoria\": \"Sedan\",\r\n      \"puertas\": \"4\"\r\n    },\r\n    \"modelo\": {\r\n      \"codigo\": 12345678,\r\n      \"marca\": \"Global Motors\",\r\n      \"nombre\": \"911 Programador\"\r\n    },\r\n    \"fechaProduccion\": \"2020-08-17\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/vehiculos/12345",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculos",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteVehiculo 12345",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/vehiculos/12345",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculos",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
