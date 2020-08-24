@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "450c421d-20ce-48a8-a65c-62643a84238e",
+		"name": "Carrera",
+		"description": "5.1: Crear un servicio rest que exponga las típicas capacidades (búsqueda, creación,\r\nmodificación, borrado) sobre la entidad Vehículo. Esta deberá alojarse en una base H2. Entidad vehículo\r\nse representa con el siguiente ejemplo, donde todos los campos son requeridos que estén presentes.\r\n(Utilizar la arquitectura Controller,Service,Repository)Crear los test de Postman necesarios para poder\r\nmostrar el correcto funcionamiento del servicio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetCarreras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carreras/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCarrera 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carreras/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostCarreras",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"fecha\": \"2020-07-17\",\r\n    \"nombre\": \"Gran Carrera Global\",\r\n    \"competidores\": [\r\n      {\"numero\":2,\"Nombre\":\"Sebastian Loeb\"},\r\n      {\"numero\":3,\"Nombre\":\"Marcus Gronholm\"},\r\n      {\"numero\":7,\"Nombre\":\"Carlos Sainz\"},\r\n      {\"numero\":11,\"Nombre\":\"Petter Solberg\"}\r\n      ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/carreras/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutVehiculo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"fecha\": \"2020-07-17\",\r\n    \"nombre\": \"Gran carrera Global\",\r\n    \"competidores\": [\r\n      {\"numero\":2,\"Nombre\":\"Sebastian Loeb\"},\r\n      {\"numero\":3,\"Nombre\":\"Marcus Gronholm\"},\r\n      {\"numero\":7,\"Nombre\":\"Carlos Sainz\"},\r\n      {\"numero\":11,\"Nombre\":\"Petter Solberg\"}\r\n      ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/carreras/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCarrera 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carreras/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
