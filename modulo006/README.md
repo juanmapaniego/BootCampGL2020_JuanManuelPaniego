@@ -72,3 +72,8 @@ haciendo que esta verifique que el stock esté disponible y lo descuente de ella
 los siguientes datos:
     - Listado de nombre de productos y cantidades
     - Id de Sucursal
+
+3. Client Side Load Balancer
+  1. Usando servicio del punto 2.1.
+    - Incluir dependencias de Ribbon.
+    - Utilizar la anotación @EnableDiscoveryClient.
