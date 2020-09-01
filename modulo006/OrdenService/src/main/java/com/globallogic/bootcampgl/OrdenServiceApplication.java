@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 
 import com.globallogic.bootcampgl.entity.Orden;
@@ -12,6 +13,7 @@ import com.globallogic.bootcampgl.entity.Producto;
 import com.globallogic.bootcampgl.repository.OrdenRepository;
 
 @SpringBootApplication
+@EnableCircuitBreaker
 public class OrdenServiceApplication {
 
 	public static void main(String[] args) {

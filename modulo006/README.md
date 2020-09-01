@@ -94,3 +94,19 @@ necesitaremos:
     - Levantar servicio del 1.2 (sucursales) en 2 puerto distintos y el discovery service.
     - Levantar servicio del punto 2.1 y realizar una petición a “sucursales por nombre de producto”. Verificar que
     que realice el pedido a las 2 instancias del servicio 1.2. **Tener en cuenta la URL de Base de Datos. Se recomienda: url: jdbc:h2:mem:{nombre-BD}**
+
+5. Circuit Breaker
+  1. Implementar circuit breaker en todos los proyectos (Punto 1.2 , 2.1 y 2.2 )
+    - Incluir dependencia de Hystrix en los servicios.
+    - Utilizar la anotación @EnableCircuitBreaker, en los servicio mencionados para indicar a Spring Cloud que
+    - el microservicio utiliza circuit breaker y habilitar la monitorización, apertura y cierre del circuito.
+    - Implementar la anotación @HystrixCommand y especificar el **fallbackMethod** en todos los métodos del
+    **Controller**
+    - **fallbackMethod** será un método nuevo.
+  2. Probar desde el proyecto 2.1
+    - levantar el servicio 2.1 y eureka server, realizar una petición de algún recurso del 1.2.
+    - verificar que el resultado es el espero, definido en el **fallbackMethod**
+  3. Habilitar Dashboard de hystrix. Implementar circuit breaker en el proyectos (Punto 2.1).
+    - Incluir dependencia de Hystrix Dashboard.
+    - Utilizar la anotación @EnableHystrixDashboard, para habilitar el dashboard de hystrix.
+    - Probar **http://localhost:[PORT]/hystrix**

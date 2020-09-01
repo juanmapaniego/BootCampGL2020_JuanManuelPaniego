@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.globallogic.bootcampgl.dto.ProductoDTO;
 import com.globallogic.bootcampgl.service.ProductoService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping("/productos")
@@ -26,6 +27,7 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 
+	@HystrixCommand(fallbackMethod = "defaultGetAll")
 	@GetMapping
 	public ResponseEntity<List<ProductoDTO>> getAll(@RequestParam(name = "nombre", required = false) String nombre) {
 		if (Objects.isNull(nombre))
@@ -33,26 +35,50 @@ public class ProductoController {
 		return ResponseEntity.ok(productoService.getAllByNombre(nombre));
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultGetById")
 	@GetMapping("/{id}")
 	public ResponseEntity<ProductoDTO> getById(@PathVariable Long id) {
 		return ResponseEntity.ok(productoService.getById(id));
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultCreate")
 	@PostMapping
 	public ResponseEntity<Void> create(@RequestBody ProductoDTO dto) {
 		productoService.create(dto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultUpdate")
 	@PutMapping("/{id}")
 	public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody ProductoDTO dto) {
 		productoService.update(id, dto);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultRemove")
 	@DeleteMapping("/{id")
 	public ResponseEntity<Void> remove(@PathVariable Long id) {
 		productoService.remove(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	public ResponseEntity<Object> defaultCreate(ProductoDTO producto) {
+		return new ResponseEntity<Object>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<Object> defaultUpdate(Long id, ProductoDTO producto) {
+		return new ResponseEntity<Object>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<Object> defaultRemove(Long id) {
+		return new ResponseEntity<Object>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<Object> defaultGetAll(String nombre) {
+		return new ResponseEntity<Object>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<Object> defaultGetById(Long id) {
+		return new ResponseEntity<Object>("En mantenimiento", HttpStatus.LOCKED);
 	}
 }

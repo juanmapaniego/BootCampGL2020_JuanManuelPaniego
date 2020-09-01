@@ -3,12 +3,14 @@ package com.globallogic.bootcampgl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 
 import com.globallogic.bootcampgl.entity.Producto;
 import com.globallogic.bootcampgl.repository.ProductoRepository;
 
 @SpringBootApplication
+@EnableCircuitBreaker
 public class ProductoServiceApplication {
 
 	public static void main(String[] args) {

@@ -19,6 +19,7 @@ import com.globallogic.bootcampgl.dtos.ProductoSucursalDTO;
 import com.globallogic.bootcampgl.dtos.SucursalDTO;
 import com.globallogic.bootcampgl.feign.OrdenClient;
 import com.globallogic.bootcampgl.feign.SucursalClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class RestTemplateController {
@@ -27,6 +28,7 @@ public class RestTemplateController {
 	@Autowired
 	private OrdenClient ordenClient;
 
+	@HystrixCommand(fallbackMethod = "defaultCreate")
 	@PostMapping("/ordenes/{idSucursal}")
 	ResponseEntity<?> getOne(@PathVariable Long idSucursal, @RequestBody List<ProductoOrdenDTO> productosOrden) {
 		SucursalDTO sucursal = sucursalClient.getById(idSucursal);
@@ -56,5 +58,9 @@ public class RestTemplateController {
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Void>(HttpStatus.NOT_ACCEPTABLE);
+	}
+
+	public ResponseEntity<?> defaultCreate(Long idSucursal, List<ProductoOrdenDTO> productos) {
+		return new ResponseEntity<String>("En mantenimiento", HttpStatus.LOCKED);
 	}
 }

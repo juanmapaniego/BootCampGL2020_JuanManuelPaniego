@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 
 import com.globallogic.bootcampgl.entity.Producto;
@@ -12,6 +13,7 @@ import com.globallogic.bootcampgl.entity.Sucursal;
 import com.globallogic.bootcampgl.repository.SucursalRepository;
 
 @SpringBootApplication
+@EnableCircuitBreaker
 public class SucursalServiceApplication {
 
 	public static void main(String[] args) {

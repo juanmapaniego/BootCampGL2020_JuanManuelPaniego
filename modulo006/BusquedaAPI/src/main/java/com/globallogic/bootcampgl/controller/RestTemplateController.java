@@ -17,6 +17,7 @@ import com.globallogic.bootcampgl.dtos.SucursalDTO;
 import com.globallogic.bootcampgl.feings.OrdenClient;
 import com.globallogic.bootcampgl.feings.ProductoClient;
 import com.globallogic.bootcampgl.feings.SucursalClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class RestTemplateController {
@@ -28,6 +29,7 @@ public class RestTemplateController {
 	@Autowired
 	private OrdenClient ordenClient;
 
+	@HystrixCommand(fallbackMethod = "defaultProducts")
 	@GetMapping("/productos/{nombre}")
 	public ResponseEntity<?> getAllProductosByName(@PathVariable(name = "nombre") String nombre) {
 
@@ -40,6 +42,7 @@ public class RestTemplateController {
 		return products.stream().filter(p -> p.getNombre().contains(nombre)).collect(Collectors.toList());
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultSucursales")
 	@GetMapping("/sucursales/{nombre}")
 	public ResponseEntity<?> getAllSucursalesByProductoName(@PathVariable String nombre) {
 
@@ -57,10 +60,22 @@ public class RestTemplateController {
 
 	}
 
+	@HystrixCommand(fallbackMethod = "defaultOrdenes")
 	@GetMapping("/ordenes/{sucursal}")
 	public ResponseEntity<?> getAllOrdenesBySucursalId(@PathVariable Long sucursal) {
 
 		return new ResponseEntity<>(ordenClient.getAll(sucursal), HttpStatus.OK);
 	}
 
+	public ResponseEntity<?> defaultProducts(String nombre) {
+		return new ResponseEntity<String>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<?> defaultOrdenes(Long id) {
+		return new ResponseEntity<String>("En mantenimiento", HttpStatus.LOCKED);
+	}
+
+	public ResponseEntity<?> defaultSucursales(String nombre) {
+		return new ResponseEntity<String>("En mantenimiento", HttpStatus.LOCKED);
+	}
 }
