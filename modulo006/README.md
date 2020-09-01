@@ -123,3 +123,30 @@ necesitaremos:
     - Utilizar la anotación @EnableEurekaClient.
     - Modificar properties.yml, usar le ServiceId como ruteo. (ServiceId es el nombre del servicio con el que registra
 en eureka)
+
+7. Config Server
+  1. Creamos otro microservicio en el puerto 9091 para el Config Server. Para ello necesitaremos:
+    - Crearse un archivo .yml en una carpeta CONFIG en su git con las configuraciones de:
+      - defaultZone: http://localhost:8761/eureka/
+      - username y password de git.
+    - Incluir dependencia de Config Server.
+    - Utilizar la anotación @EnableConfigServer, para habilitar su propio servidor. 
+    - Configuración de properties: En el application.yml es necesario agregar la configuración necesaria de la uri del
+repositorio git.
+  2. Configuración de properties: En el application.yml es necesario agregar la configuración necesaria de la uri del
+repositorio git.
+  3. Verificar los valores en **http://localhost:9091/{nombre_aplicacion_cliente}/default**
+  4. Consumir Config Server desde el servicio del punto 1.2, 2.1, 6.1 y 7.1, solo necesitamos estos pasos:
+    - Incluir dependencia de **Config Client**, **Spring Boot Actuator**, **Spring Web**.
+    - Configuración de properties: En el application.yml es necesario agregar la configuración necesaria para url de
+    config server(localhost:9091).
+    - Habilitar todas las operaciones de actuator.
+  5. Configuración de properties de los servicio 1.2, 2.1. 6.1 y 7.1:
+    - Modificar el application.yml:
+      - defaultZone: ${defaultZone}
+  6. Configuración de properties de los servicio 7.1:
+    - Modificar el application.yml:
+      - username: ${username}
+      - password: ${password}
+      - uri:${url-git}
+  
