@@ -110,3 +110,16 @@ necesitaremos:
     - Incluir dependencia de Hystrix Dashboard.
     - Utilizar la anotación @EnableHystrixDashboard, para habilitar el dashboard de hystrix.
     - Probar **http://localhost:[PORT]/hystrix**
+
+6. Service Gateway
+  1. Creamos otro microservicio en el puerto 9090 para el Service Gateway. Para ello necesitaremos:
+    - Incluir dependencia de ZUUL.
+    - Utilizar la anotación @EnableZuulProxy, para habilitar el uso de Zuul como proxy.
+    - Configuración de properties: En el application.yml es necesario agregar la configuración necesaria que indique
+    el ruteo a ejecutar para las entradas recibidas por el api gateway
+
+  2. Configurar Zuul para integrar con Eureka.
+    - Incluir dependencias del cliente de Eureka.
+    - Utilizar la anotación @EnableEurekaClient.
+    - Modificar properties.yml, usar le ServiceId como ruteo. (ServiceId es el nombre del servicio con el que registra
+en eureka)

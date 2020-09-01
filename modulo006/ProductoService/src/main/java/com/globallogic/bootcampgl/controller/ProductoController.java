@@ -1,6 +1,5 @@
 package com.globallogic.bootcampgl.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class ProductoController {
 
 	@HystrixCommand(fallbackMethod = "defaultGetAll")
 	@GetMapping
-	public ResponseEntity<List<ProductoDTO>> getAll(@RequestParam(name = "nombre", required = false) String nombre) {
+	public ResponseEntity<Object> getAll(@RequestParam(name = "nombre", required = false) String nombre) {
 		if (Objects.isNull(nombre))
 			return ResponseEntity.ok(productoService.getAll());
 		return ResponseEntity.ok(productoService.getAllByNombre(nombre));
@@ -37,27 +36,27 @@ public class ProductoController {
 
 	@HystrixCommand(fallbackMethod = "defaultGetById")
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductoDTO> getById(@PathVariable Long id) {
+	public ResponseEntity<Object> getById(@PathVariable Long id) {
 		return ResponseEntity.ok(productoService.getById(id));
 	}
 
 	@HystrixCommand(fallbackMethod = "defaultCreate")
 	@PostMapping
-	public ResponseEntity<Void> create(@RequestBody ProductoDTO dto) {
+	public ResponseEntity<Object> create(@RequestBody ProductoDTO dto) {
 		productoService.create(dto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@HystrixCommand(fallbackMethod = "defaultUpdate")
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody ProductoDTO dto) {
+	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProductoDTO dto) {
 		productoService.update(id, dto);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@HystrixCommand(fallbackMethod = "defaultRemove")
 	@DeleteMapping("/{id")
-	public ResponseEntity<Void> remove(@PathVariable Long id) {
+	public ResponseEntity<Object> remove(@PathVariable Long id) {
 		productoService.remove(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
