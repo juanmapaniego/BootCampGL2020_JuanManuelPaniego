@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.globallogic.bootcampgl.dtos.SucursalDTO;
 
-@FeignClient(name = "sucursalService", url = "localhost:8270")
+@FeignClient("SucursalService")
 public interface SucursalClient {
 
 	@GetMapping("/sucursales")

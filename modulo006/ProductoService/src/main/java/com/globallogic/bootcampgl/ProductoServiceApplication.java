@@ -19,6 +19,7 @@ public class ProductoServiceApplication {
 	public CommandLineRunner init(ProductoRepository productoRepository) {
 		return args -> {
 			productoRepository.save(Producto.builder().id(1L).nombre("Jamon").build());
+			productoRepository.save(Producto.builder().id(2L).nombre("Manteca").build());
 		};
 	}
 

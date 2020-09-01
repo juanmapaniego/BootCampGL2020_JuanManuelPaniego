@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.globallogic.bootcampgl.dtos.OrdenDTO;
 
-@FeignClient(name = "ordenService", url = "localhost:8280")
+@FeignClient("OrdenService")
 public interface OrdenClient {
 
 	@GetMapping

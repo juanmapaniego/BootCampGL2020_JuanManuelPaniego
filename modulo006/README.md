@@ -77,3 +77,20 @@ los siguientes datos:
   1. Usando servicio del punto 2.1.
     - Incluir dependencias de Ribbon.
     - Utilizar la anotación @EnableDiscoveryClient.
+
+4. Discovery Service.
+  1. Creamos otro microservicio (DISCOVERY SERVICE) en el puerto 8176 para el Server Eureka. Para ello
+necesitaremos:
+    - Incluir dependencias del server de Eureka
+    - Indicar en los properties el nombre de server de Eureka.
+    - Utilizar la anotación @EnableEurekaServer.
+  2. Registramos los microservicios del punto 1.2 , 2.1 y 2.2 en Eureka.
+    - Incluir dependencias del cliente de Eureka en los servicios.
+    - Indicar en las properties donde está Eureka, de los servicio mencionados.
+    - Verificar en las properties que cada servicio tenga un nombre para que nos descubra server eureka.
+    - Utilizar la anotación @EnableDiscoveryClient, en los servicio mencionados.
+    - Cambiar el @FeignClient(name:””,path:””) -> @FeignClient(APPLICATION-NAME) (punto 2.1 y 2.2).
+  3. Probar load balancer y discovery service.
+    - Levantar servicio del 1.2 (sucursales) en 2 puerto distintos y el discovery service.
+    - Levantar servicio del punto 2.1 y realizar una petición a “sucursales por nombre de producto”. Verificar que
+    que realice el pedido a las 2 instancias del servicio 1.2. **Tener en cuenta la URL de Base de Datos. Se recomienda: url: jdbc:h2:mem:{nombre-BD}**

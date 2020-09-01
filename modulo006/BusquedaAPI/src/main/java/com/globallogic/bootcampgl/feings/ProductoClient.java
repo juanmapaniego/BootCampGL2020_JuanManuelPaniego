@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.globallogic.bootcampgl.dtos.ProductoDTO;
 
-@FeignClient(name = "productoService", url = "localhost:8290")
+@FeignClient("ProductoService")
 public interface ProductoClient {
 
 	@GetMapping("/productos")

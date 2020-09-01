@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.globallogic.bootcampgl.dtos.ProductoCantidadDTO;
 import com.globallogic.bootcampgl.dtos.SucursalDTO;
 
-@FeignClient(name = "sucusalService", url = "localhost:8270")
+@FeignClient("SucursalService")
 public interface SucursalClient {
 	@GetMapping("/sucursales")
 	List<SucursalDTO> getAll();
