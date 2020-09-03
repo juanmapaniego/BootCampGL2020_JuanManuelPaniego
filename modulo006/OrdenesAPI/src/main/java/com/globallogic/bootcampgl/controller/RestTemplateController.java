@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class RestTemplateController {
+	private static Logger logger = LogManager.getLogger(RestTemplateController.class);
+
 	@Autowired
 	private SucursalClient sucursalClient;
 	@Autowired
@@ -31,7 +35,11 @@ public class RestTemplateController {
 	@HystrixCommand(fallbackMethod = "defaultCreate")
 	@PostMapping("/ordenes/{idSucursal}")
 	ResponseEntity<?> getOne(@PathVariable Long idSucursal, @RequestBody List<ProductoOrdenDTO> productosOrden) {
+		logger.info("Inicio metodo crear orden");
+
+		logger.warn("Inicio cliente feign sucursalService");
 		SucursalDTO sucursal = sucursalClient.getById(idSucursal);
+		logger.warn("Fin cliente feign sucursalService");
 
 		List<ProductoSucursalDTO> productoSucursalDTO = productosOrden.stream()
 				.map(p -> ProductoSucursalDTO.builder().idProducto(p.getIdProducto()).cantidad(p.getCantidad()).build())
@@ -47,16 +55,26 @@ public class RestTemplateController {
 			sucursal.getProductos().forEach(p -> {
 				int index = productoSucursalDTO.indexOf(p);
 				long newCant = p.getCantidad() - productoSucursalDTO.get(index).getCantidad();
+
+				logger.warn("Inicio cliente feign sucursalService");
 				sucursalClient.patchCantidad(idSucursal, p.getIdProducto(),
 						ProductoCantidadDTO.builder().cantidad(newCant).build());
+				logger.warn("Fin cliente feign sucursalService");
+
 				listaNuevaOrden.add(ProductoOrdenDTO.builder().idProducto(p.getIdProducto())
 						.cantidad(productoSucursalDTO.get(index).getCantidad()).build());
 			});
 			OrdenDTO orden = OrdenDTO.builder().idSucursal(idSucursal).productos(listaNuevaOrden).build();
 			System.out.println(orden);
+
+			logger.warn("Inicio cliente feign ordenService");
 			ordenClient.create(orden);
+			logger.warn("Fin cliente feign ordenService");
+
+			logger.info("Fin metodo crear orden con resultado OK");
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
+		logger.info("Fin metodo crear orden con resultado NOT_ACCEPTABLE");
 		return new ResponseEntity<Void>(HttpStatus.NOT_ACCEPTABLE);
 	}
 

@@ -149,4 +149,14 @@ repositorio git.
       - username: ${username}
       - password: ${password}
       - uri:${url-git}
-  
+
+8. Distributed Trace
+  1. Construir y comenzar una instancia de Zipkin
+  2. Verificar el acceso al servidor de Zipkin inicializado en el punto 8.1 en **http://localhost:9411/zipkin/**
+  3. Integración de Zipkin y Spring Sleuth en todos los servicios del 1.2, 2.1, 2.2 y 6.1.
+    - Incluir la dependencias de Zipkin en los servicios ya mencionados.
+    - Configuración de las properties: En los application.yml es necesario agregar la configuración necesaria para
+poder conectarnos con nuestro servidor Zipkin(http://localhost:9411/)
+  4. Agregar Logger en:
+    - Entrada y salida feign
+    - Inicio y fin de los métodos de controller
