@@ -2,9 +2,7 @@
 
 ## Bandit game
 - Paso 1:
-
-(screenshots/Paso1.PNG)
-
+<img src="screenshots/Paso1.PNG">
 - Paso 2:
 - Paso 3:
 - Paso 4:
