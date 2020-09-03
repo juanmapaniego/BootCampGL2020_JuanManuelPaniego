@@ -2,7 +2,7 @@
 
 ## Bandit game
 - Paso 1:
-(https://github.com/juanmapaniego/BootCampGL2020_JuanManuelPaniego/blob/feature/ECT007/modulo007/screenshots/Paso1.PNG)
+![] ( https://github.com/juanmapaniego/BootCampGL2020_JuanManuelPaniego/blob/feature/ECT007/modulo007/screenshots/Paso1.PNG)
 - Paso 2:
 - Paso 3:
 - Paso 4:
