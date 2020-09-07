@@ -65,7 +65,7 @@
   - Crear un contenedor, que llamaremos apache1, mapeando el puerto 80 del contenedor con el 90 de nuestra máquina, a partir de la imagen apache. Para comprobar que todo ha ido bien abrimos un navegador con la url http://localhost:90/
   <img src="screenshots/docker_apache.PNG">
   <img src="screenshots/docker_start.PNG">
-  <img src="screenshots/apache_running.PNG">
+  <img src="screenshots/apache1_running.PNG">
 
 5. Service Registry
   - Implementar un servidor de registro.
@@ -104,10 +104,15 @@
   3. Autenticacion con token. 
     <img src="screenshots/docker_cmd_e7.PNG">
     - Utiliza este ejemplo de comando de ingreso, reemplace USERNAME con tu nombre de usuario de GitHub y ~/TOKEN.txt con la ruta de archivo a tu token de acceso personal para GitHub
+    <img src="screenshots/login.PNG">
   4. Publicar un paquete de imagen.
     - Determina el nombre y la ID de la imagen Docker APACHE.
     - Etiquetas la imagen APACHE .
       <img src="screenshots/docker_cmd_e7_4.PNG">
     - Publicar la imagen para Github Packages.
+      <img src="screenshots/dockergit.PNG">
+      <img src="screenshots/dockergit_push.PNG">
     - Respuesta esperada:
       <img src="screenshots/docker_RE.PNG">
+    - Respuesta: 
+      <img src="screenshots/git_response.PNG">
