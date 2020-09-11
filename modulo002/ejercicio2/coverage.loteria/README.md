@@ -1,0 +1,2 @@
+- Como podria asegurar una cobertura del 100% del código?
+  - En este caso, para llegar al 100%, habria que analizar todas las instrucciones, lo que conllevaria a analizar todos los caminos posibles ( es decir los if), dificil de alcanzar dando que depende de una variable random.

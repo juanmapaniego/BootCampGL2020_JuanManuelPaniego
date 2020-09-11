@@ -1,0 +1,13 @@
+# MODULO 001
+- Session 1
+  - Introduccion al desarrollo en Java 
+  - Pilares de programacion orientado a objetos
+  - Breve introduccion de Maven y armado de proyectos
+- Session 2
+  - Introduccion a Git, armado de proyectos y flujo de trabajo
+  - Uso de estructuras basicas de Java
+  - Uso basico de IF, WHILE y forEach
+- Session 3
+  - Manejo de Clases y objetos con ejemplos simples
+  - Introduccion a interfaces
+  - Manjeo de Excepciones usando try-catch-finally
